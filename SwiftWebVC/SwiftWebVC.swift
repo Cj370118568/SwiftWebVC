@@ -141,7 +141,7 @@ public class SwiftWebVC: UIViewController {
         super.viewWillAppear(true)
         
         if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone) {
-            self.navigationController?.setToolbarHidden(false, animated: false)
+            self.navigationController?.setToolbarHidden(true, animated: false)
         }
         else if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
             self.navigationController?.setToolbarHidden(true, animated: true)
@@ -195,7 +195,7 @@ public class SwiftWebVC: UIViewController {
             
         }
         else {
-            let items: NSArray = [fixedSpace, backBarButtonItem, flexibleSpace, forwardBarButtonItem, flexibleSpace, refreshStopBarButtonItem, flexibleSpace, actionBarButtonItem, fixedSpace]
+            let items: NSArray = [/*fixedSpace, backBarButtonItem, flexibleSpace, forwardBarButtonItem,*/ flexibleSpace, refreshStopBarButtonItem, flexibleSpace, actionBarButtonItem, fixedSpace]
             
             if let navigationController = navigationController, !closing {
                 if presentingViewController == nil {

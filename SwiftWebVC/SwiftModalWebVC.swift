@@ -72,6 +72,7 @@ public class SwiftModalWebVC: UINavigationController {
         }
         else {
             webViewController.navigationItem.rightBarButtonItem = doneButton
+            webViewController.navigationItem.leftBarButtonItems = [webViewController.backBarButtonItem,webViewController.forwardBarButtonItem]
         }
         super.init(rootViewController: webViewController)
     }
