@@ -17,8 +17,8 @@ public class SwiftWebVC: UIViewController {
     
     public weak var delegate: SwiftWebVCDelegate?
     var storedStatusColor: UIBarStyle?
-    var buttonColor: UIColor? = nil
-    var titleColor: UIColor? = nil
+    var buttonColor: UIColor? = UIColor(red: 189/255.0, green: 189/255.0, blue: 189/255.0, alpha: 1)
+    var titleColor: UIColor? = UIColor(red: 85/255.0, green: 85/255.0, blue: 85/255.0, alpha: 1)
     var closing: Bool! = false
     
     lazy var backBarButtonItem: UIBarButtonItem =  {
@@ -137,6 +137,10 @@ public class SwiftWebVC: UIViewController {
         navBarTitle.font = UIFont(name: "HelveticaNeue-Medium", size: 17.0)
         navBarTitle.textAlignment = .center
         navigationItem.titleView = navBarTitle;
+        
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         super.viewWillAppear(true)
         

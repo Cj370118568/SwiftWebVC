@@ -51,9 +51,9 @@ public class SwiftModalWebVC: UINavigationController {
         
         switch theme {
         case .lightBlue:
-            doneButton.tintColor = nil
-            webViewController.buttonColor = nil
-            webViewController.titleColor = UIColor.black
+            doneButton.tintColor = UIColor(red: 189/255.0, green: 189/255.0, blue: 189/255.0, alpha: 1)
+            webViewController.buttonColor = UIColor(red: 189/255.0, green: 189/255.0, blue: 189/255.0, alpha: 1)
+            webViewController.titleColor = UIColor(red: 85/255.0, green: 85/255.0, blue: 85/255.0, alpha: 1)
             UINavigationBar.appearance().barStyle = UIBarStyle.default
         case .lightBlack:
             doneButton.tintColor = UIColor.darkGray
@@ -72,7 +72,7 @@ public class SwiftModalWebVC: UINavigationController {
         }
         else {
             webViewController.navigationItem.rightBarButtonItem = doneButton
-            webViewController.navigationItem.leftBarButtonItems = [webViewController.backBarButtonItem,webViewController.forwardBarButtonItem]
+            webViewController.navigationItem.leftBarButtonItems = [webViewController.backBarButtonItem /*,webViewController.forwardBarButtonItem*/]
         }
         super.init(rootViewController: webViewController)
     }
