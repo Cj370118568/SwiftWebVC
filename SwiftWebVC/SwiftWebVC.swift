@@ -8,12 +8,15 @@
 
 import WebKit
 
+
 public protocol SwiftWebVCDelegate: class {
     func didStartLoading()
     func didFinishLoading(success: Bool)
 }
 
-public class SwiftWebVC: UIViewController {
+public class SwiftWebVC: UIViewController,WKScriptMessageHandler {
+    
+    
     
     public weak var delegate: SwiftWebVCDelegate?
     var storedStatusColor: UIBarStyle?
@@ -67,7 +70,9 @@ public class SwiftWebVC: UIViewController {
     
     
     lazy var webView: WKWebView = {
-        var tempWebView = WKWebView(frame: UIScreen.main.bounds)
+        let configuration = WKWebViewConfiguration()
+        configuration.userContentController.add(self, name: "wawa")
+        var tempWebView = WKWebView(frame: UIScreen.main.bounds, configuration: configuration)
         tempWebView.uiDelegate = self
         tempWebView.navigationDelegate = self
         return tempWebView;
@@ -169,6 +174,12 @@ public class SwiftWebVC: UIViewController {
     // Toolbar
     
     func updateToolbarItems() {
+        if webView.canGoBack == false {
+            self.navigationItem.setLeftBarButton(nil, animated: false)
+        }
+        else {
+            self.navigationItem.setLeftBarButton(backBarButtonItem, animated: true)
+        }
         backBarButtonItem.isEnabled = webView.canGoBack
         forwardBarButtonItem.isEnabled = webView.canGoForward
         
@@ -365,5 +376,9 @@ extension SwiftWebVC: WKNavigationDelegate {
                 application.openURL(requestUrl)
             }
         }
+    }
+    
+    public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        <#code#>
     }
 }
